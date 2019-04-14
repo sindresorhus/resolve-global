@@ -32,7 +32,7 @@ Throws if the module can't be found.
 
 ### resolveGlobal.silent(moduleId)
 
-Returns `null` instead of throwing if the module can't be found.
+Returns `undefined` instead of throwing if the module can't be found.
 
 #### moduleId
 
