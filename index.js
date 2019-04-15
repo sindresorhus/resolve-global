@@ -2,18 +2,19 @@
 const path = require('path');
 const globalDirs = require('global-dirs');
 
-module.exports = moduleId => {
+const resolveGlobal = moduleId => {
 	try {
 		return require.resolve(path.join(globalDirs.yarn.packages, moduleId));
-	} catch (err) {
+	} catch (error) {
 		return require.resolve(path.join(globalDirs.npm.packages, moduleId));
 	}
 };
 
+module.exports = resolveGlobal;
 module.exports.silent = moduleId => {
 	try {
-		return module.exports(moduleId);
-	} catch (err) {
-		return null;
+		return resolveGlobal(moduleId);
+	} catch (error) {
+		return undefined;
 	}
 };
