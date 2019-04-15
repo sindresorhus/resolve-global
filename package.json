@@ -1,6 +1,6 @@
 {
 	"name": "resolve-global",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "Resolve the path of a globally installed module",
 	"license": "MIT",
 	"repository": "sindresorhus/resolve-global",
