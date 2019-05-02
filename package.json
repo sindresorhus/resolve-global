@@ -32,7 +32,7 @@
 		"require"
 	],
 	"dependencies": {
-		"global-dirs": "^0.1.1"
+		"global-dirs": "^1.0.0"
 	},
 	"devDependencies": {
 		"ava": "^1.4.1",
