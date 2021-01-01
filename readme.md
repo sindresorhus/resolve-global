@@ -1,4 +1,4 @@
-# resolve-global [![Build Status](https://travis-ci.org/sindresorhus/resolve-global.svg?branch=master)](https://travis-ci.org/sindresorhus/resolve-global)
+# resolve-global
 
 > Resolve the path of a globally installed module
 
