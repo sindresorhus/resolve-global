@@ -2,44 +2,40 @@
 
 > Resolve the path of a globally installed module
 
-
 ## Install
 
+```sh
+npm install resolve-global
 ```
-$ npm install resolve-global
-```
-
 
 ## Usage
 
-```
-$ npm install --global cat-names
+```sh
+npm install --global cat-names
 ```
 
 ```js
-const resolveGlobal = require('resolve-global');
+import {resolveGlobal} from 'resolve-global';
 
 console.log(resolveGlobal('cat-names'));
 //=> '/usr/local/lib/node_modules/cat-names'
 ```
 
-
 ## API
 
-### resolveGlobal(moduleId)
+### resolveGlobal(moduleName)
 
-Throws if the module can't be found.
+Throws if the module cannot be found.
 
-### resolveGlobal.silent(moduleId)
+### resolveGlobalSilent(moduleName)
 
-Returns `undefined` instead of throwing if the module can't be found.
+Returns `undefined` instead of throwing if the module cannot be found.
 
-#### moduleId
+#### moduleName
 
 Type: `string`
 
-What you would use in `require()`.
-
+What you would use in [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import).
 
 ## Related
 
@@ -47,9 +43,4 @@ What you would use in `require()`.
 - [resolve-from](https://github.com/sindresorhus/resolve-from) - Resolve the path of a module from a given path
 - [import-from](https://github.com/sindresorhus/import-from) - Import a module from a given path
 - [is-installed-globally](https://github.com/sindresorhus/is-installed-globally) - Check if your package was installed globally
-- [global-dirs](https://github.com/sindresorhus/global-dirs) - Get the directory of globally installed packages and binaries
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+- [global-directory](https://github.com/sindresorhus/global-directory) - Get the directory of globally installed packages and binaries

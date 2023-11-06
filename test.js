@@ -1,10 +1,12 @@
 import test from 'ava';
-import execa from 'execa';
-import resolveGlobal from '.';
+import {execa} from 'execa';
+import {resolveGlobal, resolveGlobalSilent} from './index.js';
 
-test('npm', async t => {
+test('resolveGlobal - npm', async t => {
+	await execa('npm', ['uninstall', '--global', 'cat-names']);
+
 	t.throws(() => {
-		resolveGlobal('.');
+		resolveGlobal('./index.js');
 	});
 
 	t.throws(() => {
@@ -18,7 +20,7 @@ test('npm', async t => {
 	await execa('npm', ['uninstall', '--global', 'cat-names']);
 });
 
-test('yarn', async t => {
+test('resolveGlobal - yarn', async t => {
 	await execa('npm', ['install', '--global', 'yarn']);
 
 	await execa('yarn', ['global', 'add', 'dog-names']);
@@ -26,6 +28,6 @@ test('yarn', async t => {
 	await execa('yarn', ['global', 'remove', 'dog-names']);
 });
 
-test('.silent()', t => {
-	t.is(resolveGlobal.silent('.'), undefined);
+test('resolveGlobalSilent', t => {
+	t.is(resolveGlobalSilent('./index.js'), undefined);
 });

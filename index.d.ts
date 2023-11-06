@@ -1,28 +1,35 @@
-declare const resolveGlobal: {
-	/**
-	Resolve the path of a globally installed module.
+/**
+Resolve the path of a globally installed module.
 
-	@param moduleId - What you would use in `require()`.
-	@returns The resolved path. Throws if the module can't be found.
+@param moduleName - What you would use in [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import).
+@returns The resolved path. Throws if the module cannot be found.
 
-	@example
-	```
-	// $ npm install --global cat-names
-	import resolveGlobal = require('resolve-global');
+@example
+```
+// $ npm install --global cat-names
 
-	console.log(resolveGlobal('cat-names'));
-	//=> '/usr/local/lib/node_modules/cat-names'
-	```
-	*/
-	(moduleId: string): string;
+import {resolveGlobal} from 'resolve-global';
 
-	/**
-	Resolve the path of a globally installed module.
+console.log(resolveGlobal('cat-names'));
+//=> '/usr/local/lib/node_modules/cat-names'
+```
+*/
+export function resolveGlobal(moduleName: string): string;
 
-	@param moduleId - What you would use in `require()`.
-	@returns The resolved path. Returns `undefined` instead of throwing if the module can't be found.
-	*/
-	silent(moduleId: string): string | undefined;
-};
+/**
+Resolve the path of a globally installed module.
 
-export = resolveGlobal;
+@param moduleName - What you would use in [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import).
+@returns The resolved path. Returns `undefined` instead of throwing if the module cannot be found.
+
+@example
+```
+// $ npm install --global cat-names
+
+import {resolveGlobalSilent} from 'resolve-global';
+
+console.log(resolveGlobalSilent('cat-names'));
+//=> '/usr/local/lib/node_modules/cat-names'
+```
+*/
+export function resolveGlobalSilent(moduleName: string): string | undefined;

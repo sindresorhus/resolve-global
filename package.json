@@ -4,13 +4,20 @@
 	"description": "Resolve the path of a globally installed module",
 	"license": "MIT",
 	"repository": "sindresorhus/resolve-global",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
+	"type": "module",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
 	"engines": {
-		"node": ">=8"
+		"node": ">=18"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
@@ -32,12 +39,15 @@
 		"require"
 	],
 	"dependencies": {
-		"global-dirs": "^0.1.1"
+		"global-directory": "^4.0.1"
 	},
 	"devDependencies": {
-		"ava": "^1.4.1",
-		"execa": "^1.0.0",
-		"tsd": "^0.7.2",
-		"xo": "^0.24.0"
+		"ava": "^5.3.1",
+		"execa": "^8.0.1",
+		"tsd": "^0.29.0",
+		"xo": "^0.56.0"
+	},
+	"ava": {
+		"timeout": "10m"
 	}
 }

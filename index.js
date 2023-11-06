@@ -1,21 +1,20 @@
-'use strict';
-const path = require('path');
-const globalDirs = require('global-dirs');
+import {createRequire} from 'node:module';
+import globalDirectory from 'global-directory';
 
-const resolveGlobal = moduleId => {
+// TODO: Use `import.meta.resolve` when targeting Node.js 22.
+const {resolve} = createRequire(import.meta.url);
+
+export function resolveGlobal(moduleName) {
+	return resolve(moduleName, {
+		paths: [
+			globalDirectory.yarn.packages,
+			globalDirectory.npm.packages,
+		],
+	});
+}
+
+export function resolveGlobalSilent(moduleName) {
 	try {
-		return require.resolve(path.join(globalDirs.yarn.packages, moduleId));
-	} catch (_) {
-		return require.resolve(path.join(globalDirs.npm.packages, moduleId));
-	}
-};
-
-module.exports = resolveGlobal;
-
-module.exports.silent = moduleId => {
-	try {
-		return resolveGlobal(moduleId);
-	} catch (_) {
-		return undefined;
-	}
-};
+		return resolveGlobal(moduleName);
+	} catch {}
+}
